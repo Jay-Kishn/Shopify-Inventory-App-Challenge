@@ -1,0 +1,31 @@
+<%- include("partials/header"); -%>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head><h1>Update Records</h1></head>
+
+    <body>
+        <form  method = "post" action ="/update" >
+        <table>
+            Serial No:<br> <input type="text" name="postSerialNo" autocomplete="off">
+            <br>
+            <br> 
+            <h3>Enter updated information</h3>
+            Name:<br> <input type="text" name="postName" autocomplete="off">
+            <br>
+            Quantity:<br> <input type="text" name="postQuantity" autocomplete="off">
+            <br>
+            Seller:<br> <input type="text" name="postSeller" autocomplete="off">
+            <br>
+            <button type="submit" name="Update" >Update</button>
+       </table>
+       </form>
+       <br>
+       <br>
+       <a href ="/View">View</a>
+       <a href = "/Add">Add</a>
+       <a href = "/Delete">Delete</a>
+    </body>
+</html>

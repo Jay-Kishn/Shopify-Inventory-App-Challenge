@@ -1,0 +1,49 @@
+<%- include("partials/header"); -%>
+
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    
+
+    <body>
+        <h1>View Records</h1>
+        <table>
+            <th>Index</th>
+            <th>Serial No.</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Seller</th>
+            <tr>
+                <td>1</td> 
+                <td>2320</td>
+                <td>Nivea Cream</td>
+                <td>50</td>
+                <td>Home</td>
+                <td>200</td>
+                <td>Jyoti Wholesale</td>
+             </tr>
+           <% var i= 2%>
+           <% Products.forEach(function(product){ %>
+           <tr>
+           <td><%= i++ %></td> 
+           <td> <%= product.Serial_No %></td>
+           <td> <%= product.Name %></td>
+           <td> <%= product.Quantity %></td>
+           <td> <%=product.Category %></td>
+           <td> <%= product.Price %></td>
+           <td> <%= product.Seller %></td>
+        </tr>
+       <% }); %>  
+       </table>
+       <br>
+       <br>
+       <a href = "/Add">Add</a> &emsp14;&emsp14;
+       <a href = "/Delete">Delete</a> &emsp14;&emsp14;
+       <a href = "/Update">Update</a> &emsp14;&emsp14;
+       <br><br>
+       <a href = "/shipment" style="font-size:30px" >Create Shipment</a>
+    </body>
+</html>

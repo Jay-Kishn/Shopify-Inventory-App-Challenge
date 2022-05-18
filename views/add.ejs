@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+<!DOCTYPE html>
+<html>
+   <body>
+      <head>
+         <title>HTML Forms</title>
+      </head>
+      <p>Add item details:</p>
+      <form method = "post" action ="/add" > 
+         Serial No:<br> <input type="text" name="postSerialNo" autocomplete="off">
+         <br>
+         Name:<br> <input type="text" name="postName" autocomplete="off">
+         <br>
+         Quantity:<br> <input type="text" name="postQuantity" autocomplete="off">
+         <br>
+         <label for="Category">Category : </label>
+         <br>
+         <select id="Category" name="postCategory">
+           <option value="Clothing">Clothing</option>
+           <option value="Electronics">Electronics</option>
+           <option value="Home">Home </option>
+         </select>
+         <br>
+         Price:<br> <input type="text" name="postPrice" autocomplete="off">
+         <br>
+         Seller:<br> <input type="text" name="postSeller" autocomplete="off">
+         <br>
+         <button type="submit" name="add" >Add</button>
+         <a href ="/View">View</a>
+         <a href = "/Delete">Delete</a>
+      </form>
+   </body>
+</html>
