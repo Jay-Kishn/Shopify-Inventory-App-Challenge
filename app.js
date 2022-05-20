@@ -188,7 +188,7 @@ app.post("/shipment",function(req,res){
 
     const Serials = [sn1,sn2,sn3,sn4,sn5,sn6,sn7,sn8,sn9];
     const Quantities = [qty1, qty2, qty3, qty4, qty5, qty6, qty7, qty8, qty9];
-    const Orig_Quant =[]
+    const Orig_Quant =[];
     let qu;
 
 
@@ -196,12 +196,17 @@ app.post("/shipment",function(req,res){
 for(let i = 0;i<Serials.length ; i++){
     let orig_qty;
         if(Serials[i]!=0){
-            Product.findOne({Serial_No:Serials[i]},{_id:0,Quantity:1},function(err,doc){
+            Product.findOne({Serial_No: Serials[i] },{_id:0,Quantity:1},function(err,doc){
                 if(err){
                     console.log(err);
                 }else{
-                    orig_qty = doc.Quantity;
+                    orig_qty = doc.Quantity
                     let new_qty = orig_qty - Quantities[i] ;
+                    console.log(new_qty);
+                    if(doc == null){
+                        console.log("Please enter a valid serial number");
+                    }
+                    
                     if(new_qty < 0){
                       console.log("The shipment cannot be completed due to stock shortage");
                     }
@@ -213,7 +218,7 @@ for(let i = 0;i<Serials.length ; i++){
                                 console.log("Item deleted")
                             }
                         })
-                    } else{
+                    } else{  
                     Product.findOneAndUpdate({Serial_No:Serials[i]},{Quantity:new_qty},function(err){
                         if(err){
                             console.log(err);
@@ -221,14 +226,15 @@ for(let i = 0;i<Serials.length ; i++){
                             console.log("Shipped Item");
                            
                         }
-                    })
-                }
-            }
+                    }) 
+                    
+                } //
+            }})
         }
-)}
-    }
+    
+}
 
-    res.redirect("/shipment");
+res.redirect("/shipment");
 });           
             
 let port = process.env.PORT;
