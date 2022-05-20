@@ -98,39 +98,43 @@ app.post("/update",function(req,res){
     const qty = req.body.postQuantity;
     const seller = req.body.postSeller;
 
-    if(name != ""){
-    Product.findOneAndUpdate({Serial_No: serial},{Name : name},function(err){
+
+    async function updateName(serial,name ,qty){
+    if(name != "" || qty != ""){
+    await Product.findOneAndUpdate({Serial_No: serial},{Name : name},function(err){
         if(err){
             console.log("An error occured please try again")
         }else{
             console.log("Posted Successfully")
-            res.redirect("/update")
+            return 100;
         }
-    })
-    }
-
-    if(qty != ""){
-        Product.findOneAndUpdate({Serial_No: serial},{Quantity : qty},function(err){
+    }).clone().then(()=>
+        {
+        if(qty != ""){
+            console.log("Updating qty");
+         Product.findOneAndUpdate({Serial_No: serial},{Quantity : qty},function(err){
             if(err){
                 console.log("An error occured please try again")
             }else{
                 console.log("Posted Successfully")
-                res.redirect("/update")
+                return 1;
+                
             }
         })
+        
         }
+    }
+    ).catch(err => {
+         console.log(err);
+      });
+    }
+    
+}
 
-    if(seller != ""){
-    Product.findOneAndUpdate({Serial_No: serial},{Seller : seller},function(err){
-        if(err){
-            console.log("An error occured please try again")
-        }else{
-            console.log("Posted Successfully")
-            res.redirect("/update")
-        }
-    })
-    }    
-
+    
+    updateName(serial,name,qty);
+    res.redirect("/update");
+    //updateQty(serial, qty);
 })
 
 app.post("/shipment",function(req,res){
