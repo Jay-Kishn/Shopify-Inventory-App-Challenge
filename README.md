@@ -39,7 +39,7 @@ The entry point file to run the program has been named app.js on GitHub . If you
 
 * This is a feature that allows the user to create a shipment of maximum 10 different products and ship them. 
 * Enter the serial nos for each product along with their quantity to be shipped . 
-* If the quantity is higher than the present capacity then the shipment will not proceed for the particular item.
+* If the quantity is higher than the present inventory then the shipment will not proceed for the particular item.
 * If the desired shipping quantity is equal to the existing inventory then the product will be deleted after the shipment.
 
 ## Try the app here:
