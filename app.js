@@ -100,7 +100,7 @@ app.post("/update",function(req,res){
 
 
     async function updateName(serial,name ,qty){
-    if(name != "" || qty != ""){
+    if(name != ""){
     await Product.findOneAndUpdate({Serial_No: serial},{Name : name},function(err){
         if(err){
             console.log("An error occured please try again")
@@ -125,13 +125,29 @@ app.post("/update",function(req,res){
         }
     }
     ).catch(err => {
+        console.log(err);
+     }).then(()=>{
+    if(seller != ""){
+        console.log("Updating seller");
+     Product.findOneAndUpdate({Serial_No: serial},{Seller : seller},function(err){
+        if(err){
+            console.log("An error occured please try again")
+        }else{
+            console.log("Posted Successfully")
+            return 1;
+            
+        }
+    })
+    
+    }
+ }
+ )
+    .catch(err => {
          console.log(err);
       });
     }
     
-}
-
-    
+ }
     updateName(serial,name,qty);
     res.redirect("/update");
     //updateQty(serial, qty);
