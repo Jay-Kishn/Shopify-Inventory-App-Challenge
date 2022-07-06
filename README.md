@@ -1,4 +1,4 @@
-# Shopify-Inventory-App-Challenge
+# Inventory-App
 An inventory web app to demonstrate my back end skills made for the Shopify intern hiring challenge
 
 ## Description
